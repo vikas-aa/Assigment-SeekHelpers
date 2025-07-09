@@ -2,7 +2,7 @@ name: Flutter CI/CD
 
 on:
   push:
-    branches: [main] # ya jo bhi teri main branch hai
+    branches: [main]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.0' # ya latest version jo tu use kar raha
+          flutter-version: '3.13.0'
 
       - name: Install dependencies
         run: flutter pub get
@@ -26,8 +26,8 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
